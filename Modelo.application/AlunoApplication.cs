@@ -1,4 +1,5 @@
 ﻿using Modelo.application.Interfaces;
+using Modelo.domain;
 using Modelo.infra.Repositorio.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace Modelo.application
             _alunoRepositorio = alunoRepositorio;
         }
 
-        public Aluno BuscarAluno(int id)
+        public Aluno BuscaAluno(int id)
         {
             var aluno = _alunoRepositorio.BuscarId(id);
             return aluno;

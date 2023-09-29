@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modelo.infra.Repositorio.Interfaces
+namespace Modelo.application.Interfaces
 {
-    public interface IAlunoRepositorio
+    public interface ITesteApplication
     {
         Aluno BuscarId(int id);
     }

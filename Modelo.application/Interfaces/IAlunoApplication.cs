@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelo.domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Modelo.application.Interfaces
 {
-    public class IAlunoApplication
+    public interface IAlunoApplication
     {
+        Aluno BuscaAluno(int id);
     }
 }

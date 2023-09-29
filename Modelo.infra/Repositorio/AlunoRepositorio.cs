@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Modelo.domain;
 using Modelo.infra.Repositorio.Interfaces;
 
 namespace Modelo.infra.Repositorio

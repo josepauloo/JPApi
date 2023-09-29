@@ -16,9 +16,10 @@ namespace JPApi.Controllers
         [HttpGet("BuscarDadosAluno/{id}")]
         public async Task<IActionResult> BuscarDadosAluno(int id)
         {
+            //Retorno<Aluno> retorno = new(null);
             try
             {
-                var aluno = _alunoApplication.BuscarAluno(id);
+                var aluno = _alunoApplication.BuscaAluno(id);
                 return Ok(aluno);
             }
             catch

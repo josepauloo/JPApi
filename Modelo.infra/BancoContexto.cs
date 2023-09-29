@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Modelo.domain;
 using Modelo.infra.Mapeamento;
 
 namespace Modelo.infra
@@ -10,12 +11,12 @@ namespace Modelo.infra
 
         }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.ApplyConfiguration(new AlunoMapeamento());
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new AlunoMapeamento());
+        }
 
-        //public DbSet<Aluno> Aluno { get; set; }
+        public DbSet<Aluno> Aluno { get; set; }
     }
 
 }

@@ -19,4 +19,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Modelo.domain\Modelo.domain.csproj" />
+  </ItemGroup>
+
 </Project>
