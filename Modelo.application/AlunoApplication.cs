@@ -1,12 +1,26 @@
-﻿using System;
+﻿using Modelo.application.Interfaces;
+using Modelo.infra.Repositorio.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Modelo.application
 {
-    internal class AlunoApplication
+    public class AlunoApplication : IAlunoApplication
     {
+        private readonly IAlunoRepositorio _alunoRepositorio;
+        public AlunoApplication(IAlunoRepositorio alunoRepositorio)
+        {
+            _alunoRepositorio = alunoRepositorio;
+        }
+
+        public Aluno BuscarAluno(int id)
+        {
+            var aluno = _alunoRepositorio.BuscarId(id);
+            return aluno;
+        }
     }
 }
