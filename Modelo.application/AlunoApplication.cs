@@ -23,5 +23,17 @@ namespace Modelo.application
             var aluno = _alunoRepositorio.BuscarId(id);
             return aluno;
         }
+        public bool InserirAluno(Aluno aluno)
+        {
+            try
+            {
+                _alunoRepositorio.Inserir(aluno);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

@@ -10,5 +10,7 @@ namespace Modelo.infra.Repositorio.Interfaces
     public interface IAlunoRepositorio
     {
         Aluno BuscarId(int id);
+
+        Aluno Inserir(Aluno aluno);
     }
 }
