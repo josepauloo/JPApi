@@ -17,13 +17,16 @@ namespace JPApi.Controllers
         [HttpGet("BuscarDadosAluno/{id}")]
         public async Task<IActionResult> BuscarDadosAluno(int id)
         {
-            //Retorno<Aluno> retorno = new(null);
+            Retorno<Aluno> retorno = new(null);
+
             try
             {
                 var aluno = _alunoApplication.BuscaAluno(id);
-                return Ok(aluno);
+                retorno.CarregaRetorno(aluno, true, "Consulta realizada com sucesso", 200);
+
+                return Ok(retorno);
             }
-            catch
+            catch(Exception)
             {
                 return BadRequest("Erro");
             }
@@ -49,5 +52,22 @@ namespace JPApi.Controllers
                 return BadRequest("Erro");
             }
         }
+
+        //[HttpPut("EditarDadosAluno")]
+        //public async Task<IActionResult> EditarDadosAluno([FromBody] AlunoDto aluno)
+        //{
+        //    try
+        //    {
+        //        var aluno = _alunoApplication.InserirAluno(aluno);
+
+
+        //        return Ok("Aluno inserido com sucesso");
+              
+        //    }
+        //    catch
+        //    {
+        //        return BadRequest("Erro");
+        //    }
+        //}
     }
 }
