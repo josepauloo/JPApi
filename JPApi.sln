@@ -16,6 +16,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modelo.domain", "Modelo.domain\Modelo.domain.csproj", "{AD07AB70-24BE-4DE1-A436-902186FDC1BF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4- Infra", "4- Infra", "{B069A9BF-D73C-4028-98AB-60FDC6B3B295}"
+	ProjectSection(SolutionItems) = preProject
+		Modelo.domain\Retorno.cs = Modelo.domain\Retorno.cs
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modelo.infra", "Modelo.infra\Modelo.infra.csproj", "{AE91E841-FB2F-4C55-9E74-2B8A98C1E7B7}"
 EndProject

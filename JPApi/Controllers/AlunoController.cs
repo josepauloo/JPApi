@@ -22,13 +22,16 @@ namespace JPApi.Controllers
             try
             {
                 var aluno = _alunoApplication.BuscaAluno(id);
+
                 retorno.CarregaRetorno(aluno, true, "Consulta realizada com sucesso", 200);
 
                 return Ok(retorno);
             }
-            catch(Exception)
+            catch(Exception e)
             {
-                return BadRequest("Erro");
+                retorno.CarregaRetorno(false, e.Message, 400);
+
+                return BadRequest(retorno);
             }
         }
 
