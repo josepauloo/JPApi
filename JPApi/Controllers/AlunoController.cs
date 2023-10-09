@@ -36,23 +36,23 @@ namespace JPApi.Controllers
         }
 
         [HttpPost("InserirDadosAluno")]
-        public async Task<IActionResult> InserirDadosAluno([FromBody] Aluno aluno)
+        public async Task<IActionResult> InserirDadosAluno([FromBody] AlunoDto alunoDto)
         {
+            Retorno<AlunoDto> retorno = new(null);
             try
             {
-                bool InsercaoSucesso = _alunoApplication.InserirAluno(aluno);
-                if(InsercaoSucesso)
-                {
-                    return Ok("Aluno inserido com sucesso");
-                }
-                else
-                {
-                    return BadRequest("Erro ao inserir aluno");
-                }
+                var aluno = _alunoApplication.InserirAluno(alunoDto);
+
+                retorno.CarregaRetorno(alunoDto, true, "Inserção realizada com sucesso", 200);
+
+                return Ok(retorno);
+            
             }
-            catch
+            catch(Exception e)
             {
-                return BadRequest("Erro");
+                retorno.CarregaRetorno(false, e.Message, 400);
+
+                return BadRequest(retorno);
             }
         }
 
@@ -65,7 +65,7 @@ namespace JPApi.Controllers
 
 
         //        return Ok("Aluno inserido com sucesso");
-              
+
         //    }
         //    catch
         //    {

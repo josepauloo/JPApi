@@ -23,11 +23,11 @@ namespace Modelo.infra.Repositorio
             return _bancoContexto.Aluno.FirstOrDefault(x => x.Id == id);
         }
 
-        public Aluno Inserir(Aluno aluno)
+        public AlunoDto Inserir(AlunoDto alunoDto)
         {
-            _bancoContexto.Aluno.Add(aluno);
+            _bancoContexto.AlunoDto.Add(alunoDto);
             _bancoContexto.SaveChanges();
-            return aluno;
+            return alunoDto;
 
         }
     }

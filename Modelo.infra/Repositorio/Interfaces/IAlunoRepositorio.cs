@@ -11,6 +11,6 @@ namespace Modelo.infra.Repositorio.Interfaces
     {
         Aluno BuscarId(int id);
 
-        Aluno Inserir(Aluno aluno);
+        AlunoDto Inserir(AlunoDto alunoDto);
     }
 }
