@@ -23,25 +23,30 @@ namespace Modelo.application
             var aluno = _alunoRepositorio.BuscarId(id);
             return aluno;
         }
-        //public bool InserirAluno(Aluno aluno)
-        //{
-        //    try
-        //    {
-        //        _alunoRepositorio.Inserir(aluno);
-        //        return true;
-        //    }
-        //    catch
-        //    {
-        //        return false;
-        //    }
-        //}
-        public AlunoDto InserirAluno(AlunoDto alunoDto)
+
+        public Aluno InserirAluno(Aluno aluno)
         {
        
-                _alunoRepositorio.Inserir(alunoDto);
-                return alunoDto;
-            
+                _alunoRepositorio.Inserir(aluno);
+                return aluno;
+        }
 
+        public Aluno DeletarAluno(int id)
+        {
+            var alunoParaExcluir = _alunoRepositorio.DeletarPorId(id);
+            if (alunoParaExcluir != null)
+            {
+                return alunoParaExcluir;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public void AtualizarDadosAluno(Aluno aluno)
+        {
+            _alunoRepositorio.AtualizarDados(aluno);
         }
     }
 }

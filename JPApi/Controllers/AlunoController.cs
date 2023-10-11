@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Modelo.application.Interfaces;
 using Modelo.domain;
 
+
 namespace JPApi.Controllers
 {
     [Route("api/[controller]")]
@@ -14,6 +15,8 @@ namespace JPApi.Controllers
         {
             _alunoApplication = alunoApplication;
         }
+
+
         [HttpGet("BuscarDadosAluno/{id}")]
         public async Task<IActionResult> BuscarDadosAluno(int id)
         {
@@ -36,14 +39,14 @@ namespace JPApi.Controllers
         }
 
         [HttpPost("InserirDadosAluno")]
-        public async Task<IActionResult> InserirDadosAluno([FromBody] AlunoDto alunoDto)
+        public async Task<IActionResult> InserirDadosAluno([FromBody] Aluno aluno)
         {
-            Retorno<AlunoDto> retorno = new(null);
+            Retorno<Aluno> retorno = new(null);
             try
             {
-                var aluno = _alunoApplication.InserirAluno(alunoDto);
+                var aluno1 = _alunoApplication.InserirAluno(aluno);
 
-                retorno.CarregaRetorno(alunoDto, true, "Inserção realizada com sucesso", 200);
+                retorno.CarregaRetorno(aluno1, true, "Inserção realizada com sucesso", 200);
 
                 return Ok(retorno);
             
@@ -56,21 +59,74 @@ namespace JPApi.Controllers
             }
         }
 
-        //[HttpPut("EditarDadosAluno")]
-        //public async Task<IActionResult> EditarDadosAluno([FromBody] AlunoDto aluno)
-        //{
-        //    try
-        //    {
-        //        var aluno = _alunoApplication.InserirAluno(aluno);
+
+        [HttpDelete("DeletarAluno/{id}")]
+        public async Task<IActionResult> DeletarAluno(int id)
+        {
+            Retorno<Aluno> retorno = new(null);
+
+            try
+            {
+                var alunoParaExcluir = _alunoApplication.DeletarAluno(id);
+
+                retorno.CarregaRetorno(alunoParaExcluir, true, "Aluno deletado com sucesso", 200);
+
+                if (alunoParaExcluir != null)
+                {
+                    return Ok(retorno);
+                }
+
+                else
+                {
+                    retorno.CarregaRetorno(false, "Aluno não encontrado", 300);
+
+                    return BadRequest(retorno);
+                } 
+            }
+            catch (Exception e)
+            {
+                retorno.CarregaRetorno(false, e.Message, 400);
+
+                return BadRequest(retorno);
+            }
+        }
+
+        [HttpPut("EditarDadosAluno")]
+        public async Task<IActionResult> EditarDadosAluno(int id, [FromBody] Aluno aluno)
+        {
+            Retorno<Aluno> retorno = new(null);
 
 
-        //        return Ok("Aluno inserido com sucesso");
+            var atualizarAluno = _alunoApplication.BuscaAluno(id);
+            if (atualizarAluno == null)
+            {
+                retorno.CarregaRetorno(false, "Aluno não encontrado", 400);
 
-        //    }
-        //    catch
-        //    {
-        //        return BadRequest("Erro");
-        //    }
-        //}
+                return BadRequest(retorno);
+            }
+
+            atualizarAluno.Nome = aluno.Nome;
+            atualizarAluno.Idade = aluno.Idade;
+            atualizarAluno.Matrícula = aluno.Matrícula;
+            atualizarAluno.Nota = aluno.Nota;
+            atualizarAluno.Cep = aluno.Cep;
+
+
+            try
+            {
+                _alunoApplication.AtualizarDadosAluno(atualizarAluno);
+
+                retorno.CarregaRetorno(aluno, true, "Dados atualizados com sucesso", 200);
+
+                return Ok(retorno);
+
+            }
+            catch(Exception e)
+            {
+                retorno.CarregaRetorno(false, e.Message, 400);
+
+                return BadRequest(retorno);
+            }
+        }
     }
 }
