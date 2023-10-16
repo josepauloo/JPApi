@@ -38,6 +38,7 @@ namespace JPApi.Controllers
             }
         }
 
+
         [HttpPost("InserirDadosAluno")]
         public async Task<IActionResult> InserirDadosAluno([FromBody] Aluno aluno)
         {
@@ -81,8 +82,6 @@ namespace JPApi.Controllers
                 return BadRequest(retorno);
             }
         }
-
-
 
 
         [HttpPut("EditarDadosAluno")]
