@@ -30,24 +30,13 @@ namespace Modelo.infra.Repositorio
             return aluno;
         }
 
-        public Aluno DeletarPorId(int id)
+        public void DeletarPorId(int id)
         {
             var alunoParaExcluir = _bancoContexto.Aluno.FirstOrDefault(x => x.Id == id);
-            if (alunoParaExcluir != null)
-            {
+
                 _bancoContexto.Aluno.Remove(alunoParaExcluir);
                 _bancoContexto.SaveChanges();
-                return alunoParaExcluir;
-            }
-
-            return null;
         }
-
-        //public void AtualizarDados(Aluno aluno)
-        //{
-        //    _bancoContexto.Aluno.Update(aluno);
-        //    _bancoContexto.SaveChanges();
-        //}
 
         public void EditarAluno(Aluno aluno)
         {

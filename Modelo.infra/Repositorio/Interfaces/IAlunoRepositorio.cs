@@ -13,9 +13,7 @@ namespace Modelo.infra.Repositorio.Interfaces
 
         Aluno Inserir(Aluno aluno);
 
-        Aluno DeletarPorId(int id);
-
-        //void AtualizarDados(Aluno aluno);
+        void DeletarPorId(int id);
 
         void EditarAluno(Aluno aluno);
     }

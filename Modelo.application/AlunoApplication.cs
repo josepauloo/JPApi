@@ -31,23 +31,12 @@ namespace Modelo.application
                 return aluno;
         }
 
-        public Aluno DeletarAluno(int id)
+        public void DeletarAluno(int id)
         {
-            var alunoParaExcluir = _alunoRepositorio.DeletarPorId(id);
-            if (alunoParaExcluir != null)
-            {
-                return alunoParaExcluir;
-            }
-            else
-            {
-                return null;
-            }
+             _alunoRepositorio.DeletarPorId(id);
+
         }
 
-        //public void AtualizarDadosAluno(Aluno aluno)
-        //{
-        //    _alunoRepositorio.AtualizarDados(aluno);
-        //}
         public void EditaAluno(AlunoDto alunoDto)
         {
             Aluno aluno = new Aluno();
