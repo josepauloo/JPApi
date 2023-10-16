@@ -44,9 +44,23 @@ namespace Modelo.application
             }
         }
 
-        public void AtualizarDadosAluno(Aluno aluno)
+        //public void AtualizarDadosAluno(Aluno aluno)
+        //{
+        //    _alunoRepositorio.AtualizarDados(aluno);
+        //}
+        public void EditaAluno(AlunoDto alunoDto)
         {
-            _alunoRepositorio.AtualizarDados(aluno);
+            Aluno aluno = new Aluno();
+
+            aluno.Id = alunoDto.Id;
+            aluno.Nome = alunoDto.Nome;
+            aluno.Idade = alunoDto.Idade;
+            aluno.Matrícula = alunoDto.Matrícula;
+            aluno.Nota = alunoDto.Nota;
+            aluno.Cep = alunoDto.Cep;
+
+            _alunoRepositorio.EditarAluno(aluno);
+
         }
     }
 }

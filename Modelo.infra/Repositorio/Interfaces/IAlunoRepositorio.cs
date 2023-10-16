@@ -15,6 +15,8 @@ namespace Modelo.infra.Repositorio.Interfaces
 
         Aluno DeletarPorId(int id);
 
-        void AtualizarDados(Aluno aluno);
+        //void AtualizarDados(Aluno aluno);
+
+        void EditarAluno(Aluno aluno);
     }
 }

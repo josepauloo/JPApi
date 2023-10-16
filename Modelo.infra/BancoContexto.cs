@@ -17,7 +17,6 @@ namespace Modelo.infra
         }
 
         public DbSet<Aluno> Aluno { get; set; }
-        public DbSet<AlunoDto> AlunoDto { get; set; }
     }
 
 }

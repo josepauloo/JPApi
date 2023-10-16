@@ -92,41 +92,62 @@ namespace JPApi.Controllers
         }
 
         [HttpPut("EditarDadosAluno")]
-        public async Task<IActionResult> EditarDadosAluno(int id, [FromBody] Aluno aluno)
+        //public async Task<IActionResult> EditarDadosAluno(int id, [FromBody] Aluno aluno)
+        //{
+        //    Retorno<Aluno> retorno = new(null);
+
+
+        //    var atualizarAluno = _alunoApplication.BuscaAluno(id);
+        //    if (atualizarAluno == null)
+        //    {
+        //        retorno.CarregaRetorno(false, "Aluno não encontrado", 400);
+
+        //        return BadRequest(retorno);
+        //    }
+
+        //    atualizarAluno.Nome = aluno.Nome;
+        //    atualizarAluno.Idade = aluno.Idade;
+        //    atualizarAluno.Matrícula = aluno.Matrícula;
+        //    atualizarAluno.Nota = aluno.Nota;
+        //    atualizarAluno.Cep = aluno.Cep;
+
+
+        //    try
+        //    {
+        //        _alunoApplication.AtualizarDadosAluno(atualizarAluno);
+
+        //        retorno.CarregaRetorno(aluno, true, "Dados atualizados com sucesso", 200);
+
+        //        return Ok(retorno);
+
+        //    }
+        //    catch(Exception e)
+        //    {
+        //        retorno.CarregaRetorno(false, e.Message, 400);
+
+        //        return BadRequest(retorno);
+        //    }
+        //}
+
+        public async Task<IActionResult> EditarDadosAluno([FromBody] AlunoDto alunoDto)
         {
             Retorno<Aluno> retorno = new(null);
 
-
-            var atualizarAluno = _alunoApplication.BuscaAluno(id);
-            if (atualizarAluno == null)
-            {
-                retorno.CarregaRetorno(false, "Aluno não encontrado", 400);
-
-                return BadRequest(retorno);
-            }
-
-            atualizarAluno.Nome = aluno.Nome;
-            atualizarAluno.Idade = aluno.Idade;
-            atualizarAluno.Matrícula = aluno.Matrícula;
-            atualizarAluno.Nota = aluno.Nota;
-            atualizarAluno.Cep = aluno.Cep;
-
-
             try
             {
-                _alunoApplication.AtualizarDadosAluno(atualizarAluno);
+                _alunoApplication.EditaAluno(alunoDto);
 
-                retorno.CarregaRetorno(aluno, true, "Dados atualizados com sucesso", 200);
+                retorno.CarregaRetorno(true, "Dados atualizados com sucesso", 200);
 
                 return Ok(retorno);
-
             }
-            catch(Exception e)
+            catch (Exception e)
             {
+
                 retorno.CarregaRetorno(false, e.Message, 400);
 
                 return BadRequest(retorno);
             }
-        }
+        } 
     }
 }

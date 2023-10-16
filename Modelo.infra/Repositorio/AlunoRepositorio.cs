@@ -43,7 +43,13 @@ namespace Modelo.infra.Repositorio
             return null;
         }
 
-        public void AtualizarDados(Aluno aluno)
+        //public void AtualizarDados(Aluno aluno)
+        //{
+        //    _bancoContexto.Aluno.Update(aluno);
+        //    _bancoContexto.SaveChanges();
+        //}
+
+        public void EditarAluno(Aluno aluno)
         {
             _bancoContexto.Aluno.Update(aluno);
             _bancoContexto.SaveChanges();
