@@ -26,7 +26,14 @@ namespace JPApi.Controllers
             {
                 var aluno = _alunoApplication.BuscaAluno(id);
 
-                retorno.CarregaRetorno(aluno, true, "Consulta realizada com sucesso", 200);
+                if(aluno != null)
+                {
+                    retorno.CarregaRetorno(aluno, true, "Consulta realizada com sucesso", 200);
+                }
+                else
+                {
+                    retorno.CarregaRetorno(aluno, true, $"Aluno com o id {id} não foi encontrado", 204);
+                }
 
                 return Ok(retorno);
             }
@@ -42,12 +49,11 @@ namespace JPApi.Controllers
         [HttpPost("InserirDadosAluno")]
         public async Task<IActionResult> InserirDadosAluno([FromBody] Aluno aluno)
         {
-            Retorno<Aluno> retorno = new(null);
+            Retorno retorno = new();
+
             try
             {
-                var aluno1 = _alunoApplication.InserirAluno(aluno);
-
-                retorno.CarregaRetorno(aluno1, true, "Inserção realizada com sucesso", 200);
+                retorno = _alunoApplication.InserirAluno(aluno);
 
                 return Ok(retorno);
             

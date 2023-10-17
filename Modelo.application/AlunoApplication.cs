@@ -24,11 +24,30 @@ namespace Modelo.application
             return aluno;
         }
 
-        public Aluno InserirAluno(Aluno aluno)
+        public Retorno InserirAluno(Aluno aluno)
         {
-       
+            Retorno retorno = new();
+
+            if (aluno != null)
+            {
+                var mensagem = ValidaAluno(aluno);
+
+                if (mensagem != null)
+                {
+                    retorno.CarregaRetorno(false, mensagem, 200);
+                    return retorno;
+                }
+
                 _alunoRepositorio.Inserir(aluno);
-                return aluno;
+
+                retorno.CarregaRetorno(true, "Aluno adicionado com sucesso", 200);
+            }
+            else
+            {
+                retorno.CarregaRetorno(true, "Nenhum dado foi informado", 200);
+            }
+            return retorno;
+       
         }
 
         public void DeletarAluno(int id)
@@ -51,5 +70,30 @@ namespace Modelo.application
             _alunoRepositorio.EditarAluno(aluno);
 
         }
+
+
+        private string ValidaAluno(Aluno aluno)
+        {
+            string mensagem = "";
+
+            if (!aluno.Matrícula.Any())
+                mensagem = "Não é possivel inserir um aluno sem matrícula";
+            
+
+            if (aluno.Cep.Length > 9)
+                mensagem = $"O cep {aluno.Cep} ultrapassa os limites de tamanho";
+            
+
+            return mensagem;
+        }
+
     }
 }
+// VALIDAÇÃO INSERIR ALUNO ===>       verificar se os campos tão preenchidos, tamanho máximo dos campos, se  
+
+// VALIDAÇÃO DELERTAR ALUNO ===>        verificar se o id existe no banco
+
+// VALIDAÇÃO EDItar ALUNO ===>          se os campos estão todos preenchidos, tamanho máximo dos campos, se o cep está corretamente escrito, verificar se existe no banco
+
+
+
