@@ -70,15 +70,13 @@ namespace JPApi.Controllers
         [HttpDelete("DeletarAluno/{id}")]
         public async Task<IActionResult> DeletarAluno(int id)
         {
-            Retorno<Aluno> retorno = new(null);
+            Retorno retorno = new();
 
             try
             {
-                _alunoApplication.DeletarAluno(id);
+                retorno = _alunoApplication.DeletarAluno(id);
 
-                retorno.CarregaRetorno( true, "Aluno deletado com sucesso", 200);
-
-                    return Ok(retorno);
+                return Ok(retorno);
 
             }
             catch (Exception e)

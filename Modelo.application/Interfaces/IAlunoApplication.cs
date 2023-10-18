@@ -12,7 +12,7 @@ namespace Modelo.application.Interfaces
         Aluno BuscaAluno(int id);
         Retorno InserirAluno(Aluno aluno);
 
-        void DeletarAluno(int id);
+        Retorno DeletarAluno(int id);
 
         void EditaAluno(AlunoDto alunoDto);
     }

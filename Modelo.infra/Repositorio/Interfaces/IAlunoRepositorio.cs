@@ -11,7 +11,7 @@ namespace Modelo.infra.Repositorio.Interfaces
     {
         Aluno BuscarId(int id);
 
-        Aluno Inserir(Aluno aluno);
+        void Inserir(Aluno aluno);
 
         void DeletarPorId(int id);
 
