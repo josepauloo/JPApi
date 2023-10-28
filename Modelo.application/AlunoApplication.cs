@@ -119,13 +119,13 @@ namespace Modelo.application
         {
             string mensagem = "";
 
-            if (!aluno.Nome.Any())
+            if (!aluno.Nome.Any() /*|| aluno.Matrícula == "string"*/)
                 mensagem = "Não é possivel inserir um aluno sem nome";
 
-            if (!aluno.Matrícula.Any())
+            if (!aluno.Matrícula.Any() /*|| aluno.Matrícula == "string"*/)
                 mensagem = "Não é possivel inserir um aluno sem matrícula";
 
-            if (!aluno.Cep.Any())
+            if (!aluno.Cep.Any() /*|| aluno.Matrícula == "string"*/)
                 mensagem = "Não é possivel inserir um aluno sem cep";
 
             if (aluno.Cep.Length > 9)
