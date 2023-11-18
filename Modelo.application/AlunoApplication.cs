@@ -24,6 +24,12 @@ namespace Modelo.application
             return aluno;
         }
 
+        public List<Aluno> BuscarAlunos()
+        {
+            var alunos = _alunoRepositorio.BuscarTodos();
+            return alunos;
+        }
+
         public Retorno InserirAluno(Aluno aluno)
         {
             Retorno retorno = new();
@@ -119,13 +125,13 @@ namespace Modelo.application
         {
             string mensagem = "";
 
-            if (!aluno.Nome.Any() /*|| aluno.Matrícula == "string"*/)
+            if (!aluno.Nome.Any() || aluno.Nome == "string")
                 mensagem = "Não é possivel inserir um aluno sem nome";
 
-            if (!aluno.Matrícula.Any() /*|| aluno.Matrícula == "string"*/)
+            if (!aluno.Matrícula.Any())
                 mensagem = "Não é possivel inserir um aluno sem matrícula";
 
-            if (!aluno.Cep.Any() /*|| aluno.Matrícula == "string"*/)
+            if (!aluno.Cep.Any())
                 mensagem = "Não é possivel inserir um aluno sem cep";
 
             if (aluno.Cep.Length > 9)

@@ -11,6 +11,8 @@ namespace Modelo.infra.Repositorio.Interfaces
     {
         Aluno BuscarId(int id);
 
+        List<Aluno> BuscarTodos();
+
         void Inserir(Aluno aluno);
 
         void DeletarPorId(int id);

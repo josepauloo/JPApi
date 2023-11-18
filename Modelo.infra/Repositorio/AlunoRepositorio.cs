@@ -23,6 +23,11 @@ namespace Modelo.infra.Repositorio
             return _bancoContexto.Aluno.FirstOrDefault(x => x.Id == id);
         }
 
+        public List<Aluno> BuscarTodos()
+        {
+            return _bancoContexto.Aluno.ToList();
+        }
+
         public void Inserir(Aluno aluno)
         {
             _bancoContexto.Aluno.Add(aluno);

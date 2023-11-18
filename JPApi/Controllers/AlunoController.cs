@@ -45,6 +45,22 @@ namespace JPApi.Controllers
             }
         }
 
+        [HttpGet("BuscarDadosAlunos2")]
+        public async Task<IActionResult> BuscarDadosAlunos2()
+        {
+            try
+            {
+                var alunos = _alunoApplication.BuscarAlunos();
+
+                return Ok(alunos);
+
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
 
         [HttpPost("InserirDadosAluno")]
         public async Task<IActionResult> InserirDadosAluno([FromBody] Aluno aluno)

@@ -16,5 +16,6 @@ namespace Modelo.domain
         public string Matrícula { get; set; }
         public double Nota { get; set; }
         public string Cep { get; set; }
+        //public DateTime DataRegistro { get; set; }
     }
 }

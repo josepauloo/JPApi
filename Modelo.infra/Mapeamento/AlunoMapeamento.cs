@@ -27,6 +27,11 @@ namespace Modelo.infra.Mapeamento
 
             builder.Property(t => t.Cep).HasColumnType("varchar(100)");
 
+
         }
     }
 }
+
+            //builder.Property(t => t.DataRegistro)
+            //  .HasColumnType("datetime")
+            //  .HasDefaultValueSql("GETDATE()");
